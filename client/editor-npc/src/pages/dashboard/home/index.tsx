@@ -8,8 +8,12 @@ import {
   FormMobSecondaryArmorLevel,
   FormMobTertiaryArmorLevel,
 } from "./components/form-mob-armor-level";
-import { FormMobWeaponLevel } from "./components/form-mob-weapon-level";
+import {
+  FormMobPrimaryWeaponLevel,
+  FormMobSecondaryWeaponLevel,
+} from "./components/form-mob-weapon-level";
 import { FormMobBossLevel } from "./components/form-mob-boss-level";
+import { FormMobSpecialItems } from "./components/form-mob-special-items";
 
 export function DashboardHomePage() {
   const npcs = [
@@ -44,17 +48,21 @@ export function DashboardHomePage() {
           </ul>
         </nav>
         <section className="grid gap-5 bg-stone-800 relative">
-          <FormMob />
           <FormMobAdditional />
+          <FormMob />
           <FormMobEquips />
           <FormMobStatus />
           <div className="grid grid-cols-3">
             <FormMobPrimaryArmorLevel />
-            <FormMobWeaponLevel />
+            <FormMobPrimaryWeaponLevel />
             <FormMobBossLevel />
             <FormMobSecondaryArmorLevel />
             <FormMobTertiaryArmorLevel />
             <FormMobQuartenaryArmorLevel />
+          </div>
+          <div className="grid grid-cols-2">
+            <FormMobSpecialItems />
+            <FormMobSecondaryWeaponLevel />
           </div>
         </section>
       </div>
