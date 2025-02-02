@@ -5,7 +5,7 @@ import { Label } from "@/shared/components/label/label";
 export function FormMobStatus() {
   return (
     <div className="flex flex-col border border-stone-700 p-4 rounded-lg gap-4">
-      <div className="text-white">MOB STATUS</div>
+      <div className="text-white font-bold">MOB STATUS</div>
       <div className="grid grid-cols-4 gap-2">
         <FormGroup className="p-2 rounded-lg border border-stone-700">
           <Label className="font-medium w-28">Level</Label>
