@@ -6,12 +6,12 @@ import {
 import { inject, injectable } from "tsyringe";
 import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
 import { AccountNotFoundException } from "@/accounts/domain/exceptions/account-not-found.exception";
-import { IAccountQueryDatasource } from "@/accounts/data-source/account/account-query.datasource";
+import { IAccountQueryDatasource } from "@/accounts/data-source/account-query.datasource";
 import { SHARED_BINDINGS } from "@/shared/symbols";
 import { EventBus } from "@/shared/domain/interfaces/event-bus";
 import { ForgotPasswordNotificationEventName } from "@/accounts/events/forgot-password-notification.event";
 import { Cryptography } from "@/accounts/domain/interfaces/cryptography";
-import { IAccountCommandDatasource } from "@/accounts/data-source/account/account-command.datasource";
+import { IAccountCommandDatasource } from "@/accounts/data-source/account-command.datasource";
 
 export interface IForgotPasswordUsecase
   extends Usecase<ForgotPasswordRequest, ForgotPasswordResponse> {}

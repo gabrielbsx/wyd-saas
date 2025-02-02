@@ -1,8 +1,8 @@
 import "reflect-metadata";
 
-import { AccountCommandDatasource } from "@/accounts/data-source/account/account-command.datasource";
-import { AccountQueryDatasource } from "@/accounts/data-source/account/account-query.datasource";
-import { AccountModel } from "@/accounts/data-source/account/account.model";
+import { AccountCommandDatasource } from "@/accounts/data-source/account-command.datasource";
+import { AccountQueryDatasource } from "@/accounts/data-source/account-query.datasource";
+import { AccountModel } from "@/accounts/data-source/account.model";
 import { BcryptCryptography } from "@/accounts/infra/bcrypt";
 import { CreateAccountController } from "@/accounts/features/create-account/create-account.controller";
 import { CreateAccountRequest } from "@/accounts/features/create-account/create-account.dto";

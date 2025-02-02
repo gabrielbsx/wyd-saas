@@ -8,7 +8,7 @@ import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
 import { inject, injectable } from "tsyringe";
 
 import { AuthenticateRequest, AuthenticateResponse } from "./authenticate.dto";
-import { IAccountQueryDatasource } from "@/accounts/data-source/account/account-query.datasource";
+import { IAccountQueryDatasource } from "@/accounts/data-source/account-query.datasource";
 
 export interface IAuthenticateUsecase
   extends Usecase<AuthenticateRequest, AuthenticateResponse> {}

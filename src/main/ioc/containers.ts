@@ -51,11 +51,11 @@ import {
 import {
   AccountCommandDatasource,
   IAccountCommandDatasource,
-} from "@/accounts/data-source/account/account-command.datasource";
+} from "@/accounts/data-source/account-command.datasource";
 import {
   AccountQueryDatasource,
   IAccountQueryDatasource,
-} from "@/accounts/data-source/account/account-query.datasource";
+} from "@/accounts/data-source/account-query.datasource";
 import { INotification } from "@/shared/domain/interfaces/notification";
 import { EmailNotificationEvent } from "@/shared/notifications/email-notification";
 import {
