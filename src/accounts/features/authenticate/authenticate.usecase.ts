@@ -1,12 +1,12 @@
 import { Usecase } from "@/shared/interfaces/usecase";
-import { AccountDataSource } from "@/accounts/data-source/account/account.datasource";
+import { IAccountDataSource } from "@/accounts/data-source/account/account.datasource";
 import { AccountNotFoundException } from "@/accounts/domain/exceptions/account-not-found.exception";
 import { Cryptography } from "@/accounts/domain/interfaces/cryptography";
 import { UnauthorizedException } from "@/shared/exceptions/unauthorized.exception";
 import { Tokenizer } from "@/accounts/domain/interfaces/tokenizer";
 import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
 
-import { inject, injectable } from "inversify";
+import { inject, injectable } from "tsyringe";
 
 import { AuthenticateRequest, AuthenticateResponse } from "./authenticate.dto";
 
@@ -17,7 +17,7 @@ export interface IAuthenticateUsecase
 export class AuthenticateUsecase implements IAuthenticateUsecase {
   constructor(
     @inject(ACCOUNT_BINDINGS.AccountDataSource)
-    private readonly _accountDataSource: AccountDataSource,
+    private readonly _accountDataSource: IAccountDataSource,
     @inject(ACCOUNT_BINDINGS.Cryptography)
     private readonly _cryptography: Cryptography,
     @inject(ACCOUNT_BINDINGS.Tokenizer)

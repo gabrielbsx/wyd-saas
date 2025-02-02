@@ -3,7 +3,7 @@ import { BadRequestException } from "@/shared/exceptions/bad-request.exception";
 
 import { z } from "zod";
 import { AuthenticateRequest } from "./authenticate.dto";
-import { injectable } from "inversify";
+import { injectable } from "tsyringe";
 
 export interface IAuthenticateValidation
   extends Validation<AuthenticateRequest> {}

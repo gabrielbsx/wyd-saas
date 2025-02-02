@@ -2,7 +2,7 @@ import { Account } from "@/accounts/domain/account";
 import { CreateAccountRequest } from "@/accounts/features/create-account/create-account.dto";
 import { AccountModel } from "./account.model";
 import { AccountMapper } from "./account.mapper";
-import { injectable } from "inversify";
+import { injectable } from "tsyringe";
 
 export interface IAccountDataSource {
   create(

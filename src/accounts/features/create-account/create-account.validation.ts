@@ -1,9 +1,8 @@
 import { Validation } from "@/shared/interfaces/validation";
-import { BadRequestException } from "@/shared/exceptions/bad-request.exception";
 
 import { z } from "zod";
 import { CreateAccountRequest } from "./create-account.dto";
-import { injectable } from "inversify";
+import { injectable } from "tsyringe";
 
 export interface ICreateAccountValidation
   extends Validation<CreateAccountRequest> {}

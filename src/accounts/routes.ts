@@ -2,13 +2,15 @@ import { FastifyInstance } from "fastify";
 import { ICreateAccountController } from "./features/create-account/create-account.controller";
 import { IAunthenticateController } from "./features/authenticate/authenticate.controller";
 import { ACCOUNT_BINDINGS } from "./symbols";
-import { container } from "@/main/ioc/containers";
 import { loginSchemaDocs } from "./docs/login.docs";
 import { registerSchemaDocs } from "./docs/register.docs";
+import { IForgotPasswordController } from "./features/forgot-password/forgot-password.controller";
+import { container } from "@/main/ioc/containers";
+import { forgotPasswordDocs } from "./docs/forgot-password.docs";
 
 export const accountRoutes = (app: FastifyInstance) => {
   app.post("/auth/register", registerSchemaDocs, async (request, reply) => {
-    const createAccountController = container.get<ICreateAccountController>(
+    const createAccountController = container.resolve<ICreateAccountController>(
       ACCOUNT_BINDINGS.CreateAccountController
     );
 
@@ -20,7 +22,7 @@ export const accountRoutes = (app: FastifyInstance) => {
   });
 
   app.post("/auth/login", loginSchemaDocs, async (request, reply) => {
-    const authenticateController = container.get<IAunthenticateController>(
+    const authenticateController = container.resolve<IAunthenticateController>(
       ACCOUNT_BINDINGS.AuthenticateController
     );
 
@@ -30,4 +32,21 @@ export const accountRoutes = (app: FastifyInstance) => {
 
     return reply.status(response.status).send(response);
   });
+
+  app.post(
+    "/auth/forgot-password",
+    forgotPasswordDocs,
+    async (request, reply) => {
+      const forgotPasswordController =
+        container.resolve<IForgotPasswordController>(
+          ACCOUNT_BINDINGS.ForgotPasswordController
+        );
+
+      const response = await forgotPasswordController.handle({
+        body: request.body,
+      });
+
+      return reply.status(response.status).send(response);
+    }
+  );
 };

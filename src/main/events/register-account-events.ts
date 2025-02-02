@@ -8,10 +8,10 @@ import { container } from "../ioc/containers";
 import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
 
 export const registerAccountEvents = () => {
-  const createGameAccountEvent = container.get<CreateGameAccountEvent>(
+  const createGameAccountEvent = container.resolve<CreateGameAccountEvent>(
     ACCOUNT_BINDINGS.CreateGameAccountEvent
   );
-  const eventBus = container.get<EventBus>(SHARED_BINDINGS.EventBus);
+  const eventBus = container.resolve<EventBus>(SHARED_BINDINGS.EventBus);
 
   eventBus.subscribe(
     CreateGameAccountEventName,

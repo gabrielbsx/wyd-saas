@@ -1,4 +1,4 @@
-import { injectable } from "inversify";
+import { injectable } from "tsyringe";
 import { Cryptography } from "../domain/interfaces/cryptography";
 import bcrypt, { genSaltSync } from "bcrypt";
 

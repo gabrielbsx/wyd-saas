@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { Tokenizer } from "../domain/interfaces/tokenizer";
 import { env } from "@/shared/externals/env";
-import { injectable } from "inversify";
+import { injectable } from "tsyringe";
 
 @injectable()
 export class JwtTokenizer implements Tokenizer {

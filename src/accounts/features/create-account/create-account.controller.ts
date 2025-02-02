@@ -2,9 +2,9 @@ import { Controller } from "@/shared/interfaces/controller";
 import { Request } from "@/shared/types/request";
 import { created } from "@/shared/responses";
 
-import { CreateAccountUsecase } from "./create-account.usecase";
-import { CreateAccountValidation } from "./create-account.validation";
-import { inject, injectable } from "inversify";
+import { ICreateAccountUsecase } from "./create-account.usecase";
+import { ICreateAccountValidation } from "./create-account.validation";
+import { inject, injectable } from "tsyringe";
 import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
 
 export interface ICreateAccountController extends Controller {}
@@ -13,18 +13,14 @@ export interface ICreateAccountController extends Controller {}
 export class CreateAccountController implements ICreateAccountController {
   constructor(
     @inject(ACCOUNT_BINDINGS.CreateAccountUsecase)
-    private readonly _createAccountUsecase: CreateAccountUsecase,
+    private readonly _createAccountUsecase: ICreateAccountUsecase,
     @inject(ACCOUNT_BINDINGS.CreateAccountValidation)
-    private readonly _createAccountValidation: CreateAccountValidation
+    private readonly _createAccountValidation: ICreateAccountValidation
   ) {}
 
   async handle(request: Request) {
-    const { body } = request;
-
-    const dto = this._createAccountValidation.validate(body);
-
+    const dto = this._createAccountValidation.validate(request.body);
     await this._createAccountUsecase.execute(dto);
-
     return created();
   }
 }

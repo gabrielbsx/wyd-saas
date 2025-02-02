@@ -1,4 +1,4 @@
-import { injectable } from "inversify";
+import { injectable } from "tsyringe";
 import { EventBus, EventRequest } from "../interfaces/event-bus";
 
 @injectable()

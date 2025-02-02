@@ -1,9 +1,9 @@
 import { Usecase } from "@/shared/interfaces/usecase";
-import { AccountDataSource } from "@/accounts/data-source/account/account.datasource";
+import { IAccountDataSource } from "@/accounts/data-source/account/account.datasource";
 import { CreateAccountRequest } from "./create-account.dto";
 import { AccountAlreadyExistsException } from "../../domain/exceptions/account-already-exists.exception";
 import { Cryptography } from "@/accounts/domain/interfaces/cryptography";
-import { inject, injectable } from "inversify";
+import { inject, injectable } from "tsyringe";
 import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
 import { SHARED_BINDINGS } from "@/shared/symbols";
 import { EventBus } from "@/shared/interfaces/event-bus";
@@ -16,7 +16,7 @@ export interface ICreateAccountUsecase
 export class CreateAccountUsecase implements ICreateAccountUsecase {
   constructor(
     @inject(ACCOUNT_BINDINGS.AccountDataSource)
-    private readonly _accountDataSource: AccountDataSource,
+    private readonly _accountDataSource: IAccountDataSource,
     @inject(ACCOUNT_BINDINGS.Cryptography)
     private readonly _cryptography: Cryptography,
     @inject(SHARED_BINDINGS.EventBus)

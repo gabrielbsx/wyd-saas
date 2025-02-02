@@ -8,6 +8,10 @@ export const ACCOUNT_BINDINGS = {
   AuthenticateValidation: Symbol.for("AuthenticateValidation"),
   AuthenticateUsecase: Symbol.for("AuthenticateUsecase"),
 
+  ForgotPasswordController: Symbol.for("ForgotPasswordController"),
+  ForgotPasswordValidation: Symbol.for("ForgotPasswordValidation"),
+  ForgotPasswordUsecase: Symbol.for("ForgotPasswordUsecase"),
+
   AccountDataSource: Symbol.for("AccountDataSource"),
   Cryptography: Symbol.for("Cryptography"),
   Tokenizer: Symbol.for("Tokenizer"),

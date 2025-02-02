@@ -12,7 +12,7 @@ import {
   CreateAccountUsecase,
   ICreateAccountUsecase,
 } from "@/accounts/features/create-account/create-account.usecase";
-import { Container } from "inversify";
+import { container } from "tsyringe";
 import { Tokenizer } from "@/accounts/domain/interfaces/tokenizer";
 import { JwtTokenizer } from "@/accounts/externals/jwt";
 import {
@@ -40,40 +40,74 @@ import {
 import { EventBus } from "@/shared/interfaces/event-bus";
 import { EventBusImpl } from "@/shared/event/event-bus";
 import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
+import {
+  ForgotPasswordController,
+  IForgotPasswordController,
+} from "@/accounts/features/forgot-password/forgot-password.controller";
+import {
+  ForgotPasswordUsecase,
+  IForgotPasswordUsecase,
+} from "@/accounts/features/forgot-password/forgot-password.usecase";
+import {
+  ForgotPasswordValidation,
+  IForgotPasswordValidation,
+} from "@/accounts/features/forgot-password/forgot-password.validation";
 
-const container = new Container();
+container.register<IAccountDataSource>(
+  ACCOUNT_BINDINGS.AccountDataSource,
+  AccountDataSource
+);
 
-container
-  .bind<ICreateAccountController>(ACCOUNT_BINDINGS.CreateAccountController)
-  .to(CreateAccountController);
-container
-  .bind<ICreateAccountValidation>(ACCOUNT_BINDINGS.CreateAccountValidation)
-  .to(CreateAccountValidation);
-container
-  .bind<ICreateAccountUsecase>(ACCOUNT_BINDINGS.CreateAccountUsecase)
-  .to(CreateAccountUsecase);
-container
-  .bind<ICreateGameAccountEvent>(ACCOUNT_BINDINGS.CreateGameAccountEvent)
-  .to(CreateGameAccountEvent);
+container.register<ICreateGameAccountEvent>(
+  ACCOUNT_BINDINGS.CreateGameAccountEvent,
+  CreateGameAccountEvent
+);
+container.register<ICreateAccountController>(
+  ACCOUNT_BINDINGS.CreateAccountController,
+  CreateAccountController
+);
+container.register<ICreateAccountValidation>(
+  ACCOUNT_BINDINGS.CreateAccountValidation,
+  CreateAccountValidation
+);
+container.register<ICreateAccountUsecase>(
+  ACCOUNT_BINDINGS.CreateAccountUsecase,
+  CreateAccountUsecase
+);
 
-container
-  .bind<IAunthenticateController>(ACCOUNT_BINDINGS.AuthenticateController)
-  .to(AuthenticateController);
-container
-  .bind<IAuthenticateValidation>(ACCOUNT_BINDINGS.AuthenticateValidation)
-  .to(AuthenticateValidation);
-container
-  .bind<IAuthenticateUsecase>(ACCOUNT_BINDINGS.AuthenticateUsecase)
-  .to(AuthenticateUsecase);
+container.register<IAunthenticateController>(
+  ACCOUNT_BINDINGS.AuthenticateController,
+  AuthenticateController
+);
+container.register<IAuthenticateValidation>(
+  ACCOUNT_BINDINGS.AuthenticateValidation,
+  AuthenticateValidation
+);
+container.register<IAuthenticateUsecase>(
+  ACCOUNT_BINDINGS.AuthenticateUsecase,
+  AuthenticateUsecase
+);
 
-container
-  .bind<IAccountDataSource>(ACCOUNT_BINDINGS.AccountDataSource)
-  .to(AccountDataSource);
-container
-  .bind<Cryptography>(ACCOUNT_BINDINGS.Cryptography)
-  .to(BcryptCryptography);
-container.bind<Tokenizer>(ACCOUNT_BINDINGS.Tokenizer).to(JwtTokenizer);
+container.register<IForgotPasswordController>(
+  ACCOUNT_BINDINGS.ForgotPasswordController,
+  ForgotPasswordController
+);
 
-container.bind<EventBus>(SHARED_BINDINGS.EventBus).to(EventBusImpl);
+container.register<IForgotPasswordValidation>(
+  ACCOUNT_BINDINGS.ForgotPasswordValidation,
+  ForgotPasswordValidation
+);
+
+container.register<IForgotPasswordUsecase>(
+  ACCOUNT_BINDINGS.ForgotPasswordUsecase,
+  ForgotPasswordUsecase
+);
+
+container.register<EventBus>(SHARED_BINDINGS.EventBus, EventBusImpl);
+container.register<Tokenizer>(ACCOUNT_BINDINGS.Tokenizer, JwtTokenizer);
+container.register<Cryptography>(
+  ACCOUNT_BINDINGS.Cryptography,
+  BcryptCryptography
+);
 
 export { container };

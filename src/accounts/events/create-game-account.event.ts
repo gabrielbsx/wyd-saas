@@ -1,5 +1,5 @@
 import { Event } from "@/shared/interfaces/event-bus";
-import { injectable } from "inversify";
+import { injectable } from "tsyringe";
 
 export type CreateGameAccountEventRequest = Readonly<{
   username: string;
