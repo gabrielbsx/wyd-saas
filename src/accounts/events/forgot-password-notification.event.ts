@@ -1,6 +1,6 @@
 import { env } from "@/shared/env";
-import { Event } from "@/shared/interfaces/event-bus";
-import { INotification } from "@/shared/interfaces/notification";
+import { Event } from "@/shared/domain/interfaces/event-bus";
+import { INotification } from "@/shared/domain/interfaces/notification";
 import { SHARED_BINDINGS } from "@/shared/symbols";
 import { inject, injectable } from "tsyringe";
 

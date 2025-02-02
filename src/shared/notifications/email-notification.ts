@@ -1,5 +1,5 @@
 import { injectable } from "tsyringe";
-import { INotification, NotificationRequest } from "../interfaces/notification";
+import { INotification, NotificationRequest } from "../domain/interfaces/notification";
 
 @injectable()
 export class EmailNotificationEvent implements INotification {

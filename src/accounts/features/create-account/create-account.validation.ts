@@ -1,4 +1,4 @@
-import { Validation } from "@/shared/interfaces/validation";
+import { Validation } from "@/shared/domain/interfaces/validation";
 
 import { z } from "zod";
 import { CreateAccountRequest } from "./create-account.dto";

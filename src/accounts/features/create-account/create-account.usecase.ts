@@ -1,11 +1,11 @@
-import { Usecase } from "@/shared/interfaces/usecase";
+import { Usecase } from "@/shared/domain/interfaces/usecase";
 import { CreateAccountRequest } from "./create-account.dto";
 import { AccountAlreadyExistsException } from "../../domain/exceptions/account-already-exists.exception";
 import { Cryptography } from "@/accounts/domain/interfaces/cryptography";
 import { inject, injectable } from "tsyringe";
 import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
 import { SHARED_BINDINGS } from "@/shared/symbols";
-import { EventBus } from "@/shared/interfaces/event-bus";
+import { EventBus } from "@/shared/domain/interfaces/event-bus";
 import { CreateGameAccountEventName } from "@/accounts/events/create-game-account.event";
 import { IAccountCommandDatasource } from "@/accounts/data-source/account/account-command.datasource";
 import { IAccountQueryDatasource } from "@/accounts/data-source/account/account-query.datasource";

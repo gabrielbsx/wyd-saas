@@ -33,7 +33,7 @@ import {
   CreateGameAccountEvent,
   ICreateGameAccountEvent,
 } from "@/accounts/events/create-game-account.event";
-import { EventBus } from "@/shared/interfaces/event-bus";
+import { EventBus } from "@/shared/domain/interfaces/event-bus";
 import { EventBusImpl } from "@/shared/event/event-bus";
 import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
 import {
@@ -56,7 +56,7 @@ import {
   AccountQueryDatasource,
   IAccountQueryDatasource,
 } from "@/accounts/data-source/account/account-query.datasource";
-import { INotification } from "@/shared/interfaces/notification";
+import { INotification } from "@/shared/domain/interfaces/notification";
 import { EmailNotificationEvent } from "@/shared/notifications/email-notification";
 import {
   ForgotPasswordNotificationEvent,

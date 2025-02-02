@@ -1,4 +1,4 @@
-import { NotFoundException } from "@/shared/exceptions/not-found.exception";
+import { NotFoundException } from "@/shared/domain/exceptions/not-found.exception";
 
 export class AccountNotFoundException extends NotFoundException {
   constructor() {

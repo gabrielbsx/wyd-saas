@@ -1,5 +1,5 @@
-import { Validation } from "@/shared/interfaces/validation";
-import { BadRequestException } from "@/shared/exceptions/bad-request.exception";
+import { Validation } from "@/shared/domain/interfaces/validation";
+import { BadRequestException } from "@/shared/domain/exceptions/bad-request.exception";
 
 import { z } from "zod";
 import { AuthenticateRequest } from "./authenticate.dto";

@@ -1,4 +1,4 @@
-import { EventBus } from "@/shared/interfaces/event-bus";
+import { EventBus } from "@/shared/domain/interfaces/event-bus";
 import { SHARED_BINDINGS } from "@/shared/symbols";
 import { container } from "../ioc/containers";
 import { ACCOUNT_BINDINGS } from "@/accounts/symbols";

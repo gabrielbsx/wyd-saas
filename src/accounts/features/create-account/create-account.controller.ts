@@ -1,6 +1,6 @@
-import { Controller } from "@/shared/interfaces/controller";
-import { Request } from "@/shared/types/request";
-import { created } from "@/shared/responses";
+import { Controller } from "@/shared/domain/interfaces/controller";
+import { Request } from "@/shared/domain/types/request";
+import { created } from "@/shared/domain/responses";
 
 import { ICreateAccountUsecase } from "./create-account.usecase";
 import { ICreateAccountValidation } from "./create-account.validation";

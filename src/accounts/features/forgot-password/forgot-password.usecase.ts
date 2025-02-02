@@ -1,4 +1,4 @@
-import { Usecase } from "@/shared/interfaces/usecase";
+import { Usecase } from "@/shared/domain/interfaces/usecase";
 import {
   ForgotPasswordRequest,
   ForgotPasswordResponse,
@@ -8,7 +8,7 @@ import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
 import { AccountNotFoundException } from "@/accounts/domain/exceptions/account-not-found.exception";
 import { IAccountQueryDatasource } from "@/accounts/data-source/account/account-query.datasource";
 import { SHARED_BINDINGS } from "@/shared/symbols";
-import { EventBus } from "@/shared/interfaces/event-bus";
+import { EventBus } from "@/shared/domain/interfaces/event-bus";
 import { ForgotPasswordNotificationEventName } from "@/accounts/events/forgot-password-notification.event";
 import { Cryptography } from "@/accounts/domain/interfaces/cryptography";
 import { IAccountCommandDatasource } from "@/accounts/data-source/account/account-command.datasource";

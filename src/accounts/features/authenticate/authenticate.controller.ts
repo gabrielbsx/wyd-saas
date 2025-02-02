@@ -1,9 +1,9 @@
-import { Controller } from "@/shared/interfaces/controller";
-import { Request } from "@/shared/types/request";
-import { Response } from "@/shared/types/response";
+import { Controller } from "@/shared/domain/interfaces/controller";
+import { Request } from "@/shared/domain/types/request";
+import { Response } from "@/shared/domain/types/response";
 import { IAuthenticateUsecase } from "./authenticate.usecase";
 import { IAuthenticateValidation } from "./authenticate.validation";
-import { ok } from "@/shared/responses";
+import { ok } from "@/shared/domain/responses";
 import { inject, injectable } from "tsyringe";
 import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
 

@@ -1,5 +1,5 @@
 import { injectable } from "tsyringe";
-import { EventBus, EventRequest } from "../interfaces/event-bus";
+import { EventBus, EventRequest } from "../domain/interfaces/event-bus";
 
 @injectable()
 export class EventBusImpl implements EventBus {

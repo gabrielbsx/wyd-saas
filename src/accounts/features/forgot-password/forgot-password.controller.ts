@@ -1,7 +1,7 @@
 import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
-import { Controller } from "@/shared/interfaces/controller";
-import { ok } from "@/shared/responses";
-import { Request } from "@/shared/types/request";
+import { Controller } from "@/shared/domain/interfaces/controller";
+import { ok } from "@/shared/domain/responses";
+import { Request } from "@/shared/domain/types/request";
 import { IForgotPasswordUsecase } from "./forgot-password.usecase";
 import { IForgotPasswordValidation } from "./forgot-password.validation";
 import { inject, injectable } from "tsyringe";

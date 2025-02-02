@@ -1,7 +1,7 @@
-import { Usecase } from "@/shared/interfaces/usecase";
+import { Usecase } from "@/shared/domain/interfaces/usecase";
 import { AccountNotFoundException } from "@/accounts/domain/exceptions/account-not-found.exception";
 import { Cryptography } from "@/accounts/domain/interfaces/cryptography";
-import { UnauthorizedException } from "@/shared/exceptions/unauthorized.exception";
+import { UnauthorizedException } from "@/shared/domain/exceptions/unauthorized.exception";
 import { Tokenizer } from "@/accounts/domain/interfaces/tokenizer";
 import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
 

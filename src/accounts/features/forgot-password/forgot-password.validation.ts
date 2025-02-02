@@ -1,4 +1,4 @@
-import { Validation } from "@/shared/interfaces/validation";
+import { Validation } from "@/shared/domain/interfaces/validation";
 import { ForgotPasswordRequest } from "./forgot-password.dto";
 import { z } from "zod";
 import { injectable } from "tsyringe";

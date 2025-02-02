@@ -1,4 +1,4 @@
-import { Event } from "@/shared/interfaces/event-bus";
+import { Event } from "@/shared/domain/interfaces/event-bus";
 import { injectable } from "tsyringe";
 
 export type CreateGameAccountEventRequest = Readonly<{

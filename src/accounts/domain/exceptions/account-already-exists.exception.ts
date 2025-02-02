@@ -1,4 +1,4 @@
-import { BadRequestException } from "@/shared/exceptions/bad-request.exception";
+import { BadRequestException } from "@/shared/domain/exceptions/bad-request.exception";
 
 export class AccountAlreadyExistsException extends BadRequestException {
   constructor() {
