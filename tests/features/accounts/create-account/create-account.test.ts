@@ -13,9 +13,10 @@ import { EventBusImpl } from "@/shared/event/event-bus";
 
 import { beforeAll, describe, expect, it } from "vitest";
 import { ZodError } from "zod";
+import { env } from "@/shared/externals/env";
 
 describe("Create Account Feature", async () => {
-  await DataSourceConnection.connect();
+  await DataSourceConnection.connect(env.MONGO_URL_TEST);
 
   beforeAll(async () => {
     await AccountModel.deleteMany({});
@@ -41,6 +42,7 @@ describe("Create Account Feature", async () => {
   const makeDto = (): CreateAccountRequest => ({
     username: "valid",
     password: "valid",
+    email: "valid@valid.com",
     passwordConfirmation: "valid",
   });
 
