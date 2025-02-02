@@ -13,6 +13,7 @@ export class AccountQueryDatasource implements IAccountQueryDatasource {
     const account = await AccountModel.findOne({
       username,
     });
+
     return !account ? null : AccountMapper.toDomain(account);
   }
 }

@@ -7,7 +7,7 @@ import { injectable } from "tsyringe";
 export class JwtTokenizer implements Tokenizer {
   generate(payload: object): string {
     return jwt.sign(JSON.stringify(payload), env.JWT_SECRET, {
-      expiresIn: env.JWT_EXPIRES_IN,
+      // expiresIn: env.JWT_EXPIRES_IN,
     });
   }
 

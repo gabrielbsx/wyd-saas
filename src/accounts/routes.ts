@@ -30,7 +30,7 @@ export const accountRoutes = (app: FastifyInstance) => {
       body: request.body,
     });
 
-    return reply.status(response.status).send(response);
+    return reply.status(response.status).send(response.body);
   });
 
   app.post(

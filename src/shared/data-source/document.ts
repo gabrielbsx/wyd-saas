@@ -7,19 +7,16 @@ export interface IDocument {
   deletedAt?: Date;
 }
 
-export const DocumentSchema = new Schema<IDocument>(
-  {
-    createdAt: {
-      type: Date,
-      required: true,
-      default: Date.now,
-    },
-    updatedAt: {
-      type: Date,
-    },
-    deletedAt: {
-      type: Date,
-    },
+export const DocumentSchema = new Schema<IDocument>({
+  createdAt: {
+    type: Date,
+    required: true,
+    default: Date.now,
   },
-  { _id: true }
-);
+  updatedAt: {
+    type: Date,
+  },
+  deletedAt: {
+    type: Date,
+  },
+});

@@ -56,6 +56,12 @@ import {
   AccountQueryDatasource,
   IAccountQueryDatasource,
 } from "@/accounts/data-source/account/account-query.datasource";
+import { INotification } from "@/shared/interfaces/notification";
+import { EmailNotificationEvent } from "@/shared/notifications/email-notification";
+import {
+  ForgotPasswordNotificationEvent,
+  IForgotPasswordNotificationEvent,
+} from "@/accounts/events/forgot-password-notification.event";
 
 container.register<IAccountCommandDatasource>(
   ACCOUNT_BINDINGS.AccountCommandDatasource,
@@ -116,6 +122,14 @@ container.register<Tokenizer>(ACCOUNT_BINDINGS.Tokenizer, JwtTokenizer);
 container.register<Cryptography>(
   ACCOUNT_BINDINGS.Cryptography,
   BcryptCryptography
+);
+container.register<INotification>(
+  SHARED_BINDINGS.EmailNotification,
+  EmailNotificationEvent
+);
+container.register<IForgotPasswordNotificationEvent>(
+  ACCOUNT_BINDINGS.ForgotPasswordNotificationEvent,
+  ForgotPasswordNotificationEvent
 );
 
 export { container };

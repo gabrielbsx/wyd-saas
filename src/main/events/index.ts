@@ -1,5 +1,7 @@
-import { registerAccountEvents } from "./register-account-events";
+import { registerForgotPasswordEvent } from "./forgot-password-notification";
+import { registerAccountEvent } from "./register-account-event";
 
 export const registerEvents = () => {
-  registerAccountEvents();
+  registerAccountEvent();
+  registerForgotPasswordEvent();
 };

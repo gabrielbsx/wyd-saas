@@ -7,7 +7,6 @@ export interface IAccountModelDocument extends IDocument {
 }
 
 export const AccountSchema = new Schema<IAccountModelDocument>({
-  ...DocumentSchema,
   username: {
     type: String,
     required: true,
@@ -19,5 +18,7 @@ export const AccountSchema = new Schema<IAccountModelDocument>({
     type: String,
   },
 });
+
+AccountSchema.add(DocumentSchema);
 
 export const AccountModel = model<IAccountModelDocument>("User", AccountSchema);

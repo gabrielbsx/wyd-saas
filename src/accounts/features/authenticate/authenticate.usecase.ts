@@ -45,7 +45,7 @@ export class AuthenticateUsecase implements IAuthenticateUsecase {
 
     const token = this._tokenizer.generate(account);
 
-    const { password: _, ...accountWithoutPassword } = account.props;
+    const { password: _, ...accountWithoutPassword } = account;
 
     return { token, account: accountWithoutPassword };
   }
