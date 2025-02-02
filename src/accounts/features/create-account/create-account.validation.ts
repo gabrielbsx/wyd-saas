@@ -13,6 +13,7 @@ export class CreateAccountValidation implements ICreateAccountValidation {
     .object({
       username: z.string().min(4).max(10),
       password: z.string().min(4).max(10),
+      email: z.string().email(),
       passwordConfirmation: z.string().min(4).max(10),
     })
     .refine((data) => data.password === data.passwordConfirmation, {

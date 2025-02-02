@@ -10,6 +10,8 @@ import { IAccountQueryDatasource } from "@/accounts/data-source/account/account-
 import { SHARED_BINDINGS } from "@/shared/symbols";
 import { EventBus } from "@/shared/interfaces/event-bus";
 import { ForgotPasswordNotificationEventName } from "@/accounts/events/forgot-password-notification.event";
+import { Cryptography } from "@/accounts/domain/interfaces/cryptography";
+import { IAccountCommandDatasource } from "@/accounts/data-source/account/account-command.datasource";
 
 export interface IForgotPasswordUsecase
   extends Usecase<ForgotPasswordRequest, ForgotPasswordResponse> {}
@@ -19,8 +21,12 @@ export class ForgotPasswordUsecase implements IForgotPasswordUsecase {
   constructor(
     @inject(ACCOUNT_BINDINGS.AccountQueryDatasource)
     private readonly _accountQueryDataSource: IAccountQueryDatasource,
+    @inject(ACCOUNT_BINDINGS.AccountCommandDatasource)
+    private readonly _accountCommandDataSource: IAccountCommandDatasource,
     @inject(SHARED_BINDINGS.EventBus)
-    private readonly _eventBus: EventBus
+    private readonly _eventBus: EventBus,
+    @inject(ACCOUNT_BINDINGS.Cryptography)
+    private readonly _cryptography: Cryptography
   ) {}
 
   async execute({
@@ -32,11 +38,23 @@ export class ForgotPasswordUsecase implements IForgotPasswordUsecase {
 
     if (!account) throw new AccountNotFoundException();
 
+    const passwordUpdated = this.generatePassword();
+    const passwordHashed = this._cryptography.hash(passwordUpdated);
+
+    await this._accountCommandDataSource.updatePassword(
+      account.id!,
+      passwordHashed
+    );
+
     await this._eventBus.publish(ForgotPasswordNotificationEventName, {
-      email: "testando@gmail.com",
-      passwordUpdated: "123456",
+      email: account.email,
+      passwordUpdated: passwordUpdated,
     });
 
     return { message: "Account recovered" };
+  }
+
+  private generatePassword() {
+    return Math.random().toString(36).substring(7);
   }
 }

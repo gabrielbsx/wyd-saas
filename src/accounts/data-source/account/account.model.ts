@@ -3,6 +3,7 @@ import { model, Schema } from "mongoose";
 
 export interface IAccountModelDocument extends IDocument {
   username: string;
+  email: string;
   password: string;
 }
 
@@ -13,6 +14,10 @@ export const AccountSchema = new Schema<IAccountModelDocument>({
     unique: true,
     minlength: 4,
     maxlength: 10,
+  },
+  email: {
+    type: String,
+    required: true,
   },
   password: {
     type: String,

@@ -6,6 +6,7 @@ import {
 export type AccountProps = Readonly<{
   id?: string;
   username: string;
+  email: string;
   password: string;
 }> &
   AggregateRootProps;
@@ -13,10 +14,17 @@ export type AccountProps = Readonly<{
 export class Account extends AggregateRoot {
   public username: string;
   public password: string;
+  public email: string;
 
-  constructor({ username, password, ...aggregateRootProps }: AccountProps) {
+  constructor({
+    email,
+    username,
+    password,
+    ...aggregateRootProps
+  }: AccountProps) {
     super(aggregateRootProps);
 
+    this.email = email;
     this.username = username;
     this.password = password;
   }

@@ -26,7 +26,7 @@ export class CreateAccountUsecase implements ICreateAccountUsecase {
     private readonly _eventBus: EventBus
   ) {}
 
-  async execute({ username, password }: CreateAccountRequest) {
+  async execute({ username, email, password }: CreateAccountRequest) {
     const isAccountAlreadyExists =
       await this._accountQueryDatasource.findAccountByUsername(username);
 
@@ -36,6 +36,7 @@ export class CreateAccountUsecase implements ICreateAccountUsecase {
 
     await this._accountCommandDataSource.create({
       username,
+      email,
       password: passwordHashed,
     });
 

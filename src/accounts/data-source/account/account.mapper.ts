@@ -11,15 +11,13 @@ export class AccountMapper {
     });
   }
 
-  static createAccountToModel({
-    username,
-    password,
-  }: AccountCreation): IAccountModelDocument {
+  static createAccountToModel(
+    accountCreation: AccountCreation
+  ): IAccountModelDocument {
     return {
       _id: new mongoose.Types.ObjectId(),
-      username,
-      password,
       createdAt: new Date(),
+      ...accountCreation,
     };
   }
 }
