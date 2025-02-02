@@ -52,7 +52,7 @@ export function DashboardHomePage() {
           <FormMob />
           <FormMobEquips />
           <FormMobStatus />
-          <div className="grid grid-cols-3">
+          <div className="grid grid-cols-3 gap-2">
             <FormMobPrimaryArmorLevel />
             <FormMobPrimaryWeaponLevel />
             <FormMobBossLevel />
@@ -60,7 +60,7 @@ export function DashboardHomePage() {
             <FormMobTertiaryArmorLevel />
             <FormMobQuartenaryArmorLevel />
           </div>
-          <div className="grid grid-cols-2">
+          <div className="grid grid-cols-2 gap-2">
             <FormMobSpecialItems />
             <FormMobSecondaryWeaponLevel />
           </div>
