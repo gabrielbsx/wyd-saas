@@ -1,4 +1,4 @@
-import { env } from "@/shared/externals/env";
+import { env } from "@/shared/env";
 import { Event } from "@/shared/interfaces/event-bus";
 import { INotification } from "@/shared/interfaces/notification";
 import { SHARED_BINDINGS } from "@/shared/symbols";

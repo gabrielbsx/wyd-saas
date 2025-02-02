@@ -1,6 +1,6 @@
 import jwt from "jsonwebtoken";
 import { Tokenizer } from "../domain/interfaces/tokenizer";
-import { env } from "@/shared/externals/env";
+import { env } from "@/shared/env";
 import { injectable } from "tsyringe";
 
 @injectable()

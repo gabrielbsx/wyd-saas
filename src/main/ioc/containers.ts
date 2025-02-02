@@ -1,4 +1,4 @@
-import { BcryptCryptography } from "@/accounts/externals/bcrypt";
+import { BcryptCryptography } from "@/accounts/infra/bcrypt";
 import { Cryptography } from "@/accounts/domain/interfaces/cryptography";
 import {
   CreateAccountController,
@@ -10,7 +10,7 @@ import {
 } from "@/accounts/features/create-account/create-account.usecase";
 import { container } from "tsyringe";
 import { Tokenizer } from "@/accounts/domain/interfaces/tokenizer";
-import { JwtTokenizer } from "@/accounts/externals/jwt";
+import { JwtTokenizer } from "@/accounts/infra/jwt";
 import {
   AuthenticateController,
   IAunthenticateController,

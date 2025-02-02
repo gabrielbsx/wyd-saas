@@ -1,4 +1,4 @@
-import { env } from "@/shared/externals/env";
+import { env } from "@/shared/env";
 
 export const logger = (() => {
   const envToLogger = {

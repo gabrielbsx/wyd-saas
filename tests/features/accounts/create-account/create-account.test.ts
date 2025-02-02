@@ -3,7 +3,7 @@ import "reflect-metadata";
 import { AccountCommandDatasource } from "@/accounts/data-source/account/account-command.datasource";
 import { AccountQueryDatasource } from "@/accounts/data-source/account/account-query.datasource";
 import { AccountModel } from "@/accounts/data-source/account/account.model";
-import { BcryptCryptography } from "@/accounts/externals/bcrypt";
+import { BcryptCryptography } from "@/accounts/infra/bcrypt";
 import { CreateAccountController } from "@/accounts/features/create-account/create-account.controller";
 import { CreateAccountRequest } from "@/accounts/features/create-account/create-account.dto";
 import { CreateAccountUsecase } from "@/accounts/features/create-account/create-account.usecase";
@@ -13,7 +13,7 @@ import { EventBusImpl } from "@/shared/event/event-bus";
 
 import { beforeAll, describe, expect, it } from "vitest";
 import { ZodError } from "zod";
-import { env } from "@/shared/externals/env";
+import { env } from "@/shared/env";
 
 describe("Create Account Feature", async () => {
   await DataSourceConnection.connect(env.MONGO_URL_TEST);

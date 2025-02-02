@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { env } from "../externals/env";
+import { env } from "../env";
 
 export class DataSourceConnection {
   static async connect(connection?: string) {
