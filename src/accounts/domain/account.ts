@@ -1,33 +1,23 @@
+import {
+  AggregateRoot,
+  AggregateRootProps,
+} from "@/shared/domain/aggregate-root";
+
 export type AccountProps = Readonly<{
   id?: string;
   username: string;
   password: string;
-}>;
+}> &
+  AggregateRootProps;
 
-export class Account {
-  private _props: AccountProps;
+export class Account extends AggregateRoot {
+  public username: string;
+  public password: string;
 
-  constructor(props: AccountProps) {
-    this._props = props;
-  }
+  constructor({ username, password, ...aggregateRootProps }: AccountProps) {
+    super(aggregateRootProps);
 
-  get username() {
-    return this._props.username;
-  }
-
-  get password() {
-    return this._props.password;
-  }
-
-  get id() {
-    return this._props.id;
-  }
-
-  get props() {
-    return {
-      id: this.id,
-      username: this.username,
-      password: this.password,
-    };
+    this.username = username;
+    this.password = password;
   }
 }

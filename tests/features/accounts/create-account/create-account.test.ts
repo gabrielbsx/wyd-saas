@@ -1,4 +1,7 @@
-import { AccountDataSource } from "@/accounts/data-source/account/account.datasource";
+import "reflect-metadata";
+
+import { AccountCommandDatasource } from "@/accounts/data-source/account/account-command.datasource";
+import { AccountQueryDatasource } from "@/accounts/data-source/account/account-query.datasource";
 import { AccountModel } from "@/accounts/data-source/account/account.model";
 import { BcryptCryptography } from "@/accounts/externals/bcrypt";
 import { CreateAccountController } from "@/accounts/features/create-account/create-account.controller";
@@ -7,7 +10,6 @@ import { CreateAccountUsecase } from "@/accounts/features/create-account/create-
 import { CreateAccountValidation } from "@/accounts/features/create-account/create-account.validation";
 import { DataSourceConnection } from "@/shared/data-source/connection";
 import { EventBusImpl } from "@/shared/event/event-bus";
-import { BadRequestException } from "@/shared/exceptions/bad-request.exception";
 
 import { beforeAll, describe, expect, it } from "vitest";
 import { ZodError } from "zod";
@@ -20,12 +22,14 @@ describe("Create Account Feature", async () => {
   });
 
   const makeSut = () => {
-    const accountDataSource = new AccountDataSource();
     const validation = new CreateAccountValidation();
     const cryptography = new BcryptCryptography();
     const eventBus = new EventBusImpl();
+    const accountCommandDatasource = new AccountCommandDatasource();
+    const accountQueryDatasource = new AccountQueryDatasource();
     const usecase = new CreateAccountUsecase(
-      accountDataSource,
+      accountCommandDatasource,
+      accountQueryDatasource,
       cryptography,
       eventBus
     );

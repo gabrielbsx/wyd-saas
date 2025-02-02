@@ -1,12 +1,13 @@
-import { model, Schema, Types } from "mongoose";
+import { DocumentSchema, IDocument } from "@/shared/data-source/document";
+import { model, Schema } from "mongoose";
 
-export interface AccountModelDocument {
-  _id: Types.ObjectId;
+export interface IAccountModelDocument extends IDocument {
   username: string;
   password: string;
 }
 
-export const AccountSchema = new Schema<AccountModelDocument>({
+export const AccountSchema = new Schema<IAccountModelDocument>({
+  ...DocumentSchema,
   username: {
     type: String,
     required: true,
@@ -19,4 +20,4 @@ export const AccountSchema = new Schema<AccountModelDocument>({
   },
 });
 
-export const AccountModel = model<AccountModelDocument>("User", AccountSchema);
+export const AccountModel = model<IAccountModelDocument>("User", AccountSchema);

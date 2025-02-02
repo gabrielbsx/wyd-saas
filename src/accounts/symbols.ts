@@ -12,7 +12,8 @@ export const ACCOUNT_BINDINGS = {
   ForgotPasswordValidation: Symbol.for("ForgotPasswordValidation"),
   ForgotPasswordUsecase: Symbol.for("ForgotPasswordUsecase"),
 
-  AccountDataSource: Symbol.for("AccountDataSource"),
+  AccountCommandDatasource: Symbol.for("AccountCommandDatasource"),
+  AccountQueryDatasource: Symbol.for("AccountQueryDatasource"),
   Cryptography: Symbol.for("Cryptography"),
   Tokenizer: Symbol.for("Tokenizer"),
 } as const;

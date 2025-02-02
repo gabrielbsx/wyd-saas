@@ -1,7 +1,3 @@
-import {
-  AccountDataSource,
-  IAccountDataSource,
-} from "@/accounts/data-source/account/account.datasource";
 import { BcryptCryptography } from "@/accounts/externals/bcrypt";
 import { Cryptography } from "@/accounts/domain/interfaces/cryptography";
 import {
@@ -52,10 +48,22 @@ import {
   ForgotPasswordValidation,
   IForgotPasswordValidation,
 } from "@/accounts/features/forgot-password/forgot-password.validation";
+import {
+  AccountCommandDatasource,
+  IAccountCommandDatasource,
+} from "@/accounts/data-source/account/account-command.datasource";
+import {
+  AccountQueryDatasource,
+  IAccountQueryDatasource,
+} from "@/accounts/data-source/account/account-query.datasource";
 
-container.register<IAccountDataSource>(
-  ACCOUNT_BINDINGS.AccountDataSource,
-  AccountDataSource
+container.register<IAccountCommandDatasource>(
+  ACCOUNT_BINDINGS.AccountCommandDatasource,
+  AccountCommandDatasource
+);
+container.register<IAccountQueryDatasource>(
+  ACCOUNT_BINDINGS.AccountQueryDatasource,
+  AccountQueryDatasource
 );
 
 container.register<ICreateGameAccountEvent>(

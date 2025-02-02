@@ -10,6 +10,7 @@ export type Request<
     params: TParams;
     headers: THeaders;
     cookies: unknown;
+    tenant: string;
     method: "GET" | "POST" | "PUT" | "DELETE" | "PATCH";
   }>
 >;
