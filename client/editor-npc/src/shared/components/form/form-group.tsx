@@ -1,7 +1,15 @@
-import { PropsWithChildren } from "react";
+import { HTMLAttributes } from "react";
+import { twMerge } from "tailwind-merge";
 
-interface FormGroupProps extends PropsWithChildren {}
+interface FormGroupProps extends HTMLAttributes<HTMLDivElement> {}
 
-export function FormGroup({ children }: FormGroupProps) {
-  return <div className="flex flex-col justify-center gap-2">{children}</div>;
+export function FormGroup({ className, children, ...props }: FormGroupProps) {
+  return (
+    <div
+      className={twMerge("flex flex-col justify-center gap-2", className)}
+      {...props}
+    >
+      {children}
+    </div>
+  );
 }
