@@ -33,9 +33,10 @@
     "bcrypt": "^5.1.1",
     "fastify": "^5.2.1",
     "fastify-print-routes": "^4.0.1",
-    "inversify": "^6.2.1",
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.9.6",
+    "reflect-metadata": "^0.2.2",
+    "tsyringe": "^4.8.0",
     "zod": "^3.24.1"
   }
 }
