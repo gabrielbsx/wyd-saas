@@ -5,8 +5,10 @@ import { injectable } from "inversify";
 
 @injectable()
 export class JwtTokenizer implements Tokenizer {
-  generate(payload: string | Buffer | object): string {
-    return jwt.sign(payload, env.JWT_SECRET);
+  generate(payload: object): string {
+    return jwt.sign(JSON.stringify(payload), env.JWT_SECRET, {
+      expiresIn: env.JWT_EXPIRES_IN,
+    });
   }
 
   verify<T = unknown>(token: string): T | null {

@@ -1,12 +1,14 @@
 import { Usecase } from "@/shared/interfaces/usecase";
-import { AuthenticateRequest, AuthenticateResponse } from "./authenticate.dto";
 import { AccountDataSource } from "@/accounts/data-source/account/account.datasource";
-import { AccountNotFoundException } from "@/accounts/exceptions/account-not-found.exception";
+import { AccountNotFoundException } from "@/accounts/domain/exceptions/account-not-found.exception";
 import { Cryptography } from "@/accounts/domain/interfaces/cryptography";
 import { UnauthorizedException } from "@/shared/exceptions/unauthorized.exception";
 import { Tokenizer } from "@/accounts/domain/interfaces/tokenizer";
-import { inject, injectable } from "inversify";
 import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
+
+import { inject, injectable } from "inversify";
+
+import { AuthenticateRequest, AuthenticateResponse } from "./authenticate.dto";
 
 export interface IAuthenticateUsecase
   extends Usecase<AuthenticateRequest, AuthenticateResponse> {}
@@ -43,10 +45,7 @@ export class AuthenticateUsecase implements IAuthenticateUsecase {
 
     const token = this._tokenizer.generate(account);
 
-    const accountWithoutPassword = Object.assign(
-      { password: undefined },
-      account
-    );
+    const { password: _, ...accountWithoutPassword } = account.props;
 
     return { token, account: accountWithoutPassword };
   }

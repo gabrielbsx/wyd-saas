@@ -22,4 +22,12 @@ export class Account {
   get id() {
     return this._props.id;
   }
+
+  get props() {
+    return {
+      id: this.id,
+      username: this.username,
+      password: this.password,
+    };
+  }
 }

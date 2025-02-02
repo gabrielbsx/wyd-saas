@@ -6,9 +6,11 @@ import { CreateAccountRequest } from "@/accounts/features/create-account/create-
 import { CreateAccountUsecase } from "@/accounts/features/create-account/create-account.usecase";
 import { CreateAccountValidation } from "@/accounts/features/create-account/create-account.validation";
 import { DataSourceConnection } from "@/shared/data-source/connection";
+import { EventBusImpl } from "@/shared/event/event-bus";
 import { BadRequestException } from "@/shared/exceptions/bad-request.exception";
 
 import { beforeAll, describe, expect, it } from "vitest";
+import { ZodError } from "zod";
 
 describe("Create Account Feature", async () => {
   await DataSourceConnection.connect();
@@ -21,7 +23,12 @@ describe("Create Account Feature", async () => {
     const accountDataSource = new AccountDataSource();
     const validation = new CreateAccountValidation();
     const cryptography = new BcryptCryptography();
-    const usecase = new CreateAccountUsecase(accountDataSource, cryptography);
+    const eventBus = new EventBusImpl();
+    const usecase = new CreateAccountUsecase(
+      accountDataSource,
+      cryptography,
+      eventBus
+    );
     const controller = new CreateAccountController(usecase, validation);
 
     return { sut: controller };
@@ -44,7 +51,7 @@ describe("Create Account Feature", async () => {
     });
 
     // Then
-    await expect(result).rejects.toThrow(BadRequestException);
+    await expect(result).rejects.toThrow(ZodError);
   });
 
   it("should not create an account with invalid password confirmation", async () => {
@@ -58,7 +65,7 @@ describe("Create Account Feature", async () => {
     });
 
     // Then
-    await expect(result).rejects.toThrow(BadRequestException);
+    await expect(result).rejects.toThrow(ZodError);
   });
 
   it("should create an account with valid payload", async () => {

@@ -17,6 +17,7 @@ export class CreateAccountValidation implements ICreateAccountValidation {
       passwordConfirmation: z.string().min(4).max(10),
     })
     .refine((data) => data.password === data.passwordConfirmation, {
+      path: ["passwordConfirmation"],
       message: "Passwords do not match",
     })
     .readonly();
@@ -29,9 +30,7 @@ export class CreateAccountValidation implements ICreateAccountValidation {
     } = CreateAccountValidation.schema.safeParse(data);
 
     if (!success) {
-      throw new BadRequestException(
-        `Validation failed: ${error.errors.join(", ")}`
-      );
+      throw error;
     }
 
     return dto;

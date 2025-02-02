@@ -1,12 +1,12 @@
 import { model, Schema, Types } from "mongoose";
 
-export interface AccountModelType {
+export interface AccountModelDocument {
   _id: Types.ObjectId;
   username: string;
   password: string;
 }
 
-export const AccountSchema = new Schema<AccountModelType>({
+export const AccountSchema = new Schema<AccountModelDocument>({
   username: {
     type: String,
     required: true,
@@ -19,4 +19,4 @@ export const AccountSchema = new Schema<AccountModelType>({
   },
 });
 
-export const AccountModel = model<AccountModelType>("User", AccountSchema);
+export const AccountModel = model<AccountModelDocument>("User", AccountSchema);

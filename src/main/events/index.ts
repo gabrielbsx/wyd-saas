@@ -1,4 +1,4 @@
-import { registerAccountEvents } from "@/accounts/events";
+import { registerAccountEvents } from "./register-account-events";
 
 export const registerEvents = () => {
   registerAccountEvents();

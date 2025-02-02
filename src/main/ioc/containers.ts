@@ -31,11 +31,15 @@ import {
   CreateAccountValidation,
   ICreateAccountValidation,
 } from "@/accounts/features/create-account/create-account.validation";
+
+import { SHARED_BINDINGS } from "@/shared/symbols";
 import {
   CreateGameAccountEvent,
   ICreateGameAccountEvent,
-} from "./events/create-game-account.event";
-import { ACCOUNT_BINDINGS } from "./symbols";
+} from "@/accounts/events/create-game-account.event";
+import { EventBus } from "@/shared/interfaces/event-bus";
+import { EventBusImpl } from "@/shared/event/event-bus";
+import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
 
 const container = new Container();
 
@@ -70,4 +74,6 @@ container
   .to(BcryptCryptography);
 container.bind<Tokenizer>(ACCOUNT_BINDINGS.Tokenizer).to(JwtTokenizer);
 
-export const accountContainer = container;
+container.bind<EventBus>(SHARED_BINDINGS.EventBus).to(EventBusImpl);
+
+export { container };

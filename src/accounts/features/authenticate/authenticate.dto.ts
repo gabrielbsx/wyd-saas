@@ -7,5 +7,5 @@ export type AuthenticateRequest = Readonly<{
 
 export type AuthenticateResponse = Readonly<{
   token: string;
-  account: AccountProps;
+  account: Omit<AccountProps, "password">;
 }>;

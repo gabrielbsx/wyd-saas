@@ -7,7 +7,4 @@ export interface EventBus {
   subscribe: (eventName: string, handler: Function) => void;
 }
 
-export type EventRequest<T = unknown> = Readonly<{
-  event: string;
-  payload: T;
-}>;
+export type EventRequest<T = unknown> = Readonly<T>;
