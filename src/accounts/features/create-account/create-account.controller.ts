@@ -4,10 +4,17 @@ import { created } from "@/shared/responses";
 
 import { CreateAccountUsecase } from "./create-account.usecase";
 import { CreateAccountValidation } from "./create-account.validation";
+import { inject, injectable } from "inversify";
+import { ACCOUNT_BINDINGS } from "@/accounts/symbols";
 
-export class CreateAccountController implements Controller {
+export interface ICreateAccountController extends Controller {}
+
+@injectable()
+export class CreateAccountController implements ICreateAccountController {
   constructor(
+    @inject(ACCOUNT_BINDINGS.CreateAccountUsecase)
     private readonly _createAccountUsecase: CreateAccountUsecase,
+    @inject(ACCOUNT_BINDINGS.CreateAccountValidation)
     private readonly _createAccountValidation: CreateAccountValidation
   ) {}
 

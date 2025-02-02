@@ -1,19 +1,19 @@
 import { Validation } from "@/shared/interfaces/validation";
-import { CreateAccountDto } from "./create-account.dto";
-import { z } from "zod";
 import { BadRequestException } from "@/shared/exceptions/bad-request.exception";
 
-export interface CreateAccountValidation extends Validation<CreateAccountDto> {}
+import { z } from "zod";
+import { AuthenticateRequest } from "./authenticate.dto";
+import { injectable } from "inversify";
 
-export class CreateAccountValidation implements CreateAccountValidation {
+export interface IAuthenticateValidation
+  extends Validation<AuthenticateRequest> {}
+
+@injectable()
+export class AuthenticateValidation implements IAuthenticateValidation {
   static schema = z
     .object({
       username: z.string().min(4).max(10),
       password: z.string().min(4).max(10),
-      passwordConfirmation: z.string().min(4).max(10),
-    })
-    .refine((data) => data.password === data.passwordConfirmation, {
-      message: "Passwords do not match",
     })
     .readonly();
 
@@ -22,7 +22,7 @@ export class CreateAccountValidation implements CreateAccountValidation {
       success,
       error,
       data: dto,
-    } = CreateAccountValidation.schema.safeParse(data);
+    } = AuthenticateValidation.schema.safeParse(data);
 
     if (!success) {
       throw new BadRequestException(
