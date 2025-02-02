@@ -6,7 +6,9 @@
   "main": "index.js",
   "scripts": {
     "start:dev": "node --import tsx --watch --env-file=.env.development ./src/main",
-    "test:watch": "vitest --watch"
+    "test:watch": "vitest --watch",
+    "test:ci": "vitest",
+    "start:ci": "act -j build"
   },
   "keywords": [],
   "author": "gabrielbsx",
@@ -27,6 +29,7 @@
     "vitest": "^3.0.4"
   },
   "dependencies": {
+    "@fastify/cors": "^10.0.2",
     "@fastify/swagger": "^9.4.2",
     "@fastify/swagger-ui": "^5.2.1",
     "@scalar/fastify-api-reference": "^1.25.113",

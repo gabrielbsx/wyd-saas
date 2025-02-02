@@ -32,6 +32,18 @@ export const loginSchemaDocs = {
               username: {
                 type: "string",
               },
+              email: {
+                type: "string",
+              },
+              createdAt: {
+                type: "string",
+              },
+              updatedAt: {
+                type: "string",
+              },
+              deletedAt: {
+                type: "string",
+              },
             },
           },
         },

@@ -8,6 +8,10 @@ export const registerSchemaDocs = {
           minLength: 4,
           maxLength: 10,
         },
+        email: {
+          type: "string",
+          format: "email",
+        },
         password: {
           type: "string",
           minLength: 4,
@@ -19,7 +23,7 @@ export const registerSchemaDocs = {
           maxLength: 10,
         },
       },
-      required: ["username", "password", "passwordConfirmation"],
+      required: ["username", "email", "password", "passwordConfirmation"],
     },
     response: {
       201: {
