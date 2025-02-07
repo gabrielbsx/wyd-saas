@@ -1,0 +1,19 @@
+{
+  "name": "saas",
+  "private": true,
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:client": "cd ./client/editor-npc && pnpm dev",
+    "start:server": "cd ./server && pnpm start:dev"
+  },
+  "keywords": [],
+  "author": "gabrielbsx",
+  "license": "ISC",
+  "dependencies": {
+    "ref-array-di": "^1.2.2",
+    "ref-napi": "^3.0.3",
+    "ref-struct-di": "^1.1.1"
+  }
+}

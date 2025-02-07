@@ -62,7 +62,35 @@ import {
   ForgotPasswordNotificationEvent,
   IForgotPasswordNotificationEvent,
 } from "@/accounts/events/forgot-password-notification.event";
+import {
+  FetchNpcsController,
+  IFetchNpcsController,
+} from "@/npcs/features/fetch-npcs/fetch-npcs.controller";
+import { NPC_BINDINGS } from "@/npcs/symbols";
+import {
+  FetchNpcsUsecase,
+  IFetchNpcsUsecase,
+} from "@/npcs/features/fetch-npcs/fetch-npcs.usecase";
+import {
+  INpcQueryDatasource,
+  NpcQueryDatasource,
+} from "@/npcs/data-source/npc-query.datasource";
+import {
+  FetchNpcByNameController,
+  IFetchNpcByNameController,
+} from "@/npcs/features/fetch-npc-by-name/fetch-npc-by-name.controller";
+import {
+  FetchNpcByNameUsecase,
+  IFetchNpcByNameUsecase,
+} from "@/npcs/features/fetch-npc-by-name/fetch-npc-by-name.usecase";
+import {
+  FetchNpcByNameValidation,
+  IFetchNpcByNameValidation,
+} from "@/npcs/features/fetch-npc-by-name/fetch-npc-by-name.validation";
 
+/**
+ * Account DI
+ */
 container.register<IAccountCommandDatasource>(
   ACCOUNT_BINDINGS.AccountCommandDatasource,
   AccountCommandDatasource
@@ -117,6 +145,10 @@ container.register<IForgotPasswordUsecase>(
   ForgotPasswordUsecase
 );
 
+/**
+ * Shared DI
+ */
+
 container.register<EventBus>(SHARED_BINDINGS.EventBus, EventBusImpl);
 container.register<Tokenizer>(ACCOUNT_BINDINGS.Tokenizer, JwtTokenizer);
 container.register<Cryptography>(
@@ -130,6 +162,39 @@ container.register<INotification>(
 container.register<IForgotPasswordNotificationEvent>(
   ACCOUNT_BINDINGS.ForgotPasswordNotificationEvent,
   ForgotPasswordNotificationEvent
+);
+
+/**
+ * NPC DI
+ */
+container.register<IFetchNpcsController>(
+  NPC_BINDINGS.FetchNpcsController,
+  FetchNpcsController
+);
+
+container.register<IFetchNpcsUsecase>(
+  NPC_BINDINGS.FetchNpcsUsecase,
+  FetchNpcsUsecase
+);
+
+container.register<INpcQueryDatasource>(
+  NPC_BINDINGS.NpcQueryDatasource,
+  NpcQueryDatasource
+);
+
+container.register<IFetchNpcByNameController>(
+  NPC_BINDINGS.FetchNpcByNameController,
+  FetchNpcByNameController
+);
+
+container.register<IFetchNpcByNameUsecase>(
+  NPC_BINDINGS.FetchNpcByNameUsecase,
+  FetchNpcByNameUsecase
+);
+
+container.register<IFetchNpcByNameValidation>(
+  NPC_BINDINGS.FetchNpcByNameValidation,
+  FetchNpcByNameValidation
 );
 
 export { container };

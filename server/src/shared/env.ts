@@ -7,6 +7,7 @@ const envSchema = z.object({
   JWT_EXPIRES_IN: z.string().transform(Number),
   NODE_ENV: z.enum(["development", "production", "test"]),
   EMAIL_TO: z.string(),
+  NPC_DIR: z.string(),
 });
 
 export const env = envSchema.parse(import.meta?.env || process.env);

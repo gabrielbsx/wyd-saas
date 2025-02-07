@@ -15,8 +15,6 @@ export const signinService = async (dto: SigninRequest) => {
 
   const authStore = useAuthStore.getState();
 
-  console.log(authStore);
-
   authStore.login(token, account);
 
   toast.success("Successfully signed in");

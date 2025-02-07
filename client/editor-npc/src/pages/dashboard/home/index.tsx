@@ -14,26 +14,25 @@ import {
 } from "./components/form-mob-weapon-level";
 import { FormMobBossLevel } from "./components/form-mob-boss-level";
 import { FormMobSpecialItems } from "./components/form-mob-special-items";
+import { useFetchNpcs } from "@/features/fetch-npcs/use-fetch-npcs.hook";
+import { useFetchNpcByName } from "@/features/fetch-npc-by-name/use-fetch-npc-by-name.hook";
 
 export function DashboardHomePage() {
-  const npcs = [
-    "BossAzran",
-    "BossAzran_",
-    "BossAzran__",
-    "Boss_1",
-    "Boss_2",
-    "Boss_3",
-  ];
+  const { npcs, isLoading } = useFetchNpcs();
+  const { setName, npc } = useFetchNpcByName();
 
-  const onHandleNpc = (npc: string) => {
-    console.log(npc);
-  };
+  const onHandleNpc = (npc: string) => setName(npc);
 
   return (
     <div className="p-2">
       <div className="flex flex-row gap-10">
-        <nav className="bg-stone-900 w-1/5 flex p-4 border border-stone-700 rounded-lg overflow-y-auto">
+        <nav className="bg-stone-900 w-1/5 flex p-4 border border-stone-700 max-h-[calc(100vh-2rem)] rounded-lg overflow-y-auto">
           <ul className="space-y-2 w-full">
+            {isLoading && (
+              <div className="flex justify-center items-center h-20">
+                <span className="text-white">Loading...</span>
+              </div>
+            )}
             {npcs.map((npc) => (
               <li key={npc}>
                 <button
@@ -48,7 +47,7 @@ export function DashboardHomePage() {
           </ul>
         </nav>
         <section className="grid gap-5 bg-stone-800 relative">
-          <FormMobAdditional />
+          <FormMobAdditional npc={npc} />
           <FormMob />
           <FormMobEquips />
           <FormMobStatus />
